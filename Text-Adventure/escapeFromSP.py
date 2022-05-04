@@ -1,20 +1,37 @@
 # Este jogo é uma aventura baseada em texto, que consiste em escapar de São Paulo.
-# A terra entrou no que parece uma terceira gerra-mundial.
-# Satelites foram destruidos, a internet foi sabotada, os meios de comunicação silenciados.
-# Ataques com bombas eletromagneticas destruiram grande parte do pais e deixaram os sobreviventes as cegas.
-# Sem comunicação, nem informações de qualquer tipo, espalhando o caos e destruição por toda cidade.
-# Você se encontra no centro de São Paulo, em um dos predios ao redor da Igreja da Consolação.
-# O panorama se encontra irreconhecível, você mal acredita que o predio está em pé.
-# Os gritos nas ruas se tornaram parte do som ambiente, onde antes eram passaros.
-# É possivel enchergar predios com chamas que permanecem eternas.
-# Você está sobrevivendo a varias semanas com comida estocada, nada mudou,
-# nenhuma ajuda veio, nem sinal dos militares.
-# militares esses que desfilaram na Praça, exibindo suas tropas, armamentos e tankes de jatos d'água,
-# que mais pareciam ser feitos para controlar a população em caso de uma guerra civil, do que na propria guerra.
-#
 
 
+class Faca:
+    def __int__(self):
+        self.nome = "Faca"
+        self.descricao = "Uma faca cerrilhada meio amolada simples."
+        self.dano = 10
+    def __str__(self):
+        return self.nome
 
+class Pedra:
+    def __int__(self):
+        self.nome = "Pedra"
+        self.descricao = "Uma pedra um pouco maior que uma bola de tenis, ideal para arremeçar."
+        self.dano = 5
+    def __str__(self):
+        return self.nome
+
+class Espingarda:
+    def __int__(self):
+        self.nome = "Escopeta 12mm"
+        self.descricao = "Uma espingarda calibre 12mm, normalmente usada por policiais militares."
+        self.dano = 5
+    def __str__(self):
+        return self.nome
+
+class Espingarda:
+    def __int__(self):
+        self.nome = "Escopeta 12mm"
+        self.descricao = "Uma espingarda calibre 12mm, normalmente usada por policiais militares."
+        self.dano = 5
+    def __str__(self):
+        return self.nome
 
 def get_player_command():
     return input("Digite uma ação: ")
@@ -43,7 +60,8 @@ def play():
     items = [
         'Balas 38mm',
         'Comida estragada',
-        'lente de óculos'
+        'lente de óculos',
+        'Kit primeiros-socorros'
     ]
 # MARK: GAME LOOP
     if action_input in ["n", "N"]:
