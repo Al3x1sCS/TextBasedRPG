@@ -21,7 +21,7 @@ class Espingarda:
     def __int__(self):
         self.nome = "Escopeta 12mm"
         self.descricao = "Uma espingarda calibre 12mm, normalmente usada por policiais militares."
-        self.dano = 5
+        self.dano = 70
     def __str__(self):
         return self.nome
 
