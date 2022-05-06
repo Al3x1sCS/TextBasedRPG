@@ -48,6 +48,16 @@ class Frigideira(Arma):
 def get_player_command():
     return input("Digite uma ação: ")
 
+def arma_mais_poderosa(mochila):
+    dano_maximo = 0
+    melhor_arma = None
+    for item in mochila:
+        if item.dano > dano_maximo:
+            melhor_arma = item
+            dano_maximo = item.dano
+    return melhor_arma
+
+
 
 def play():
     print("Escape from São Paulo!")
@@ -62,7 +72,8 @@ def play():
     action_input = get_player_command()
     mochila = [
         Pedra(),
-        'Mochila',
+        Faca(),
+        Frigideira(),
         'Revolver 38mm',
         'Corda 10m',
         'Rações para viagem',
