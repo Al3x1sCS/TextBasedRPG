@@ -1,6 +1,9 @@
 # Armas
 
 class Arma:
+    def __init__(self):
+        raise NotImplementedError("Não crie um objeto novo, crie uma classe com herança")
+
     def __str__(self):
         return self.nome
 
