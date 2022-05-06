@@ -7,28 +7,28 @@ class Arma:
 
 
 class Faca(Arma):
-    def __int__(self):
+    def __init__(self):
         self.nome = "Faca"
         self.descricao = "Uma faca cerrilhada meio amolada simples."
         self.dano = 10
 
 
 class Pedra(Arma):
-    def __int__(self):
+    def __init__(self):
         self.nome = "Pedra"
         self.descricao = "Uma pedra um pouco maior que uma bola de tenis, ideal para arremeçar."
         self.dano = 5
 
 
 class Espingarda(Arma):
-    def __int__(self):
+    def __init__(self):
         self.nome = "Escopeta 12mm"
         self.descricao = "Uma espingarda calibre 12mm, normalmente usada por policiais militares."
         self.dano = 70
 
 
 class Carabina(Arma):
-    def __int__(self):
+    def __init__(self):
         self.nome = "Escopeta 12mm"
         self.descricao = "Carabina é uma arma de fogo mais curta que o fuzil, tendo entre 1,0 e 1,2 \n" \
                          "metro de comprimento muito usada em caça e tiro desportivo podendo ser de \n" \
@@ -38,7 +38,7 @@ class Carabina(Arma):
 
 
 class Frigideira(Arma):
-    def __int__(self):
+    def __init__(self):
         self.nome = "Frigideira"
         self.descricao = "Um utensílio usado na cozinha para fritar alimentos."
         self.dano = 7
@@ -52,27 +52,31 @@ def arma_mais_poderosa(mochila):
     dano_maximo = 0
     melhor_arma = None
     for item in mochila:
-        if item.dano > dano_maximo:
-            melhor_arma = item
-            dano_maximo = item.dano
+        try:
+            if dano_maximo < item.dano:
+                melhor_arma = item
+                dano_maximo = item.dano
+        except AttributeError:
+            pass
     return melhor_arma
-
 
 
 def play():
     print("Escape from São Paulo!")
     print('''Ações validas:
-    Ir para o Norte [n ou N]
-    Ir para o Sul   [s ou S]
-    Ir para o Este  [e ou E]
-    Ir para o Oeste [o ou O]
-    Ver Mochila  [i ou I]
-    Procurar na area [p ou P]\n''')
+    [n ou N] Ir para o Norte
+    [s ou S] Ir para o Sul
+    [e ou E] Ir para o Este
+    [o ou O] Ir para o Oeste
+    [i ou I] Ver Mochila
+    [p ou P] Procurar na area
+    [m ou M] Ver melhor arma
+    \n''')
 
     action_input = get_player_command()
+
     mochila = [
         Pedra(),
-        Faca(),
         Frigideira(),
         'Revolver 38mm',
         'Corda 10m',
@@ -106,6 +110,8 @@ def play():
         print(items)
         for i in items:
             mochila.append(i)
+    elif action_input in ['m', 'M']:
+        print(arma_mais_poderosa(mochila))
     else:
         print("Ação invalida! Digite uma direção valida. ")
 
