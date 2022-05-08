@@ -59,8 +59,7 @@ mapa_do_mundo = [
 def tile_at(x, y):
     if x < 0 or y < 0:
         return None
-
-        try:
-            return mapa_do_mundo[y][x]
-        except IndexError:
-            return None
+    try:
+        return mapa_do_mundo[y][x]
+    except IndexError:
+        return None

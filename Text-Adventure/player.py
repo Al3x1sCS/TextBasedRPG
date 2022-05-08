@@ -1,4 +1,5 @@
 import items
+import world
 
 class Player:
     def __init__(self):
@@ -8,6 +9,24 @@ class Player:
             'Balas',
             'Kit-médico'
         ]
+        self.x = 1
+        self.y = 2
+
+    def move(self, coord_x, coord_y):
+        self.x += coord_x
+        self.y += coord_y
+
+    def moverNorte(self):
+        self.move(coord_x=0, coord_y=-1)
+
+    def moverSul(self):
+        self.move(coord_x=0, coord_y=1)
+
+    def moverEste(self):
+        self.move(coord_x=1, coord_y=0)
+
+    def moverOeste(self):
+        self.move(coord_x=-1, coord_y=0)
 
     def print_mochila(self):
         print("Mochila: ")

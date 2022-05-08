@@ -1,5 +1,6 @@
 # Este jogo é uma aventura baseada em texto, que consiste em escapar de São Paulo.
 from player import Player
+import world
 
 def play():
     print("Escape from São Paulo!")
@@ -14,16 +15,23 @@ def play():
     player = Player()
     # GAME LOOP
     while True:
+        room = world.tile_at(player.x, player.y)
+        print(room.intro_text())
         action_input = get_player_command()
 
         if action_input in ["n", "N"]:
             print("Viajar para o Norte!")
+            player.moverNorte()
+
         elif action_input in ['s', 'S']:
             print("Viajar para o Sul!")
+            player.moverSul()
         elif action_input in ['e', 'E']:
             print("Viajar para o Este!")
+            player.moverEste()
         elif action_input in ['o', 'O']:
             print("Viajar para o Oeste!")
+            player.moverOeste()
         elif action_input in ['i', 'I']:
             print("Mochila:\n")
             player.print_mochila()
