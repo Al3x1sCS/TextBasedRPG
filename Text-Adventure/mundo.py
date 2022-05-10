@@ -1,3 +1,6 @@
+import inimigos
+import random
+
 class Mundo:
     def __init__(self, x, y):
         self.x = x
@@ -38,6 +41,21 @@ class BlocoPilhagem(Mundo):
         Parece que este local tem itens valiosos.
         '''
         # Criar função para adicionar itens ao inventário
+
+class BlocoInimigos(Mundo):
+    def __init__(self, x, y):
+        r = random.random()
+        if r < 0.50:
+            self.inimigos = inimigos.Bandido()
+            self.textoVivo = '''
+            Um bandido salta de trás de um carro quebrado e aponta uma faca afiada em sua direção.
+            '''
+            # Criar uma função para adquirir o loot do bandido.
+
+            self.textoMorto = '''
+            O corpo morto do bandido se encontra estendido no chão.
+            '''
+            #continuar escrevendo o ELIF
 
 
 class BlocoVitoria(Mundo):
