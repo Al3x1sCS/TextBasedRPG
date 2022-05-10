@@ -19,12 +19,8 @@ class BlocoInicial(Mundo):
         toda cidade.
         
     Ações validas:    
-    [W] Ir para o Norte
-    [S] Ir para o Sul
-    [D] Ir para o Este
-    [A] Ir para o Oeste
-    [Q] Ver Mochila
-    [E] Ver melhor arma
+    [W] Ir para o Norte  [S] Ir para o Sul  [D] Ir para o Este
+    [A] Ir para o Oeste  [Q] Ver Mochila    [E] Ver melhor arma 
         '''
 
 
@@ -59,7 +55,7 @@ class BlocoVitoria(Mundo):
 mapa = [
     [None, BlocoInicial(1, 0), None],
     [None, BlocoVazio(1, 1), None],
-    [BlocoVazio(0, 2), BlocoVazio(1, 2), BlocoVazio(2, 2)],
+    [BlocoVazio(0, 2), BlocoPilhagem(1, 2), BlocoVazio(2, 2)],
     [None, BlocoVitoria(1, 3), None]
 ]
 
