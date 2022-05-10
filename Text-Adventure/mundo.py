@@ -1,43 +1,51 @@
-class MapTile:
+class Mundo:
     def __init__(self, x, y):
         self.x = x
         self.y = y
 
-    def intro_text(self):
+    def texto(self):
         raise NotImplementedError("Crie uma classe!")
 
 
-class StartTile(MapTile):
-    def intro_text(self):
-        return '''
+class BlocoInicial(Mundo):
+    def texto(self):
+        return '''Escape de São Paulo!        
             A terra entrou no que parece ser uma terceira gerra-mundial.
         Satélites foram destruídos, a internet foi sabotada e os meios de
         comunicação silenciados.
             Ataques com bombas eletromagnéticas destruíram grande parte
         do país e deixaram os sobreviventes as cegas, sem comunicação, nem
         informações de qualquer tipo, espalhando o caos e destruição por
-        toda cidade.\n
+        toda cidade.
+        
+    Ações validas:    
+    [W] Ir para o Norte
+    [S] Ir para o Sul
+    [D] Ir para o Este
+    [A] Ir para o Oeste
+    [Q] Ver Mochila
+    [E] Ver melhor arma
         '''
 
 
-class EmptyTile(MapTile):
-    def intro_text(self):
+class BlocoVazio(Mundo):
+    def texto(self):
         return '''
         Este caminho está bloqueado.
         Você não pode ir por este lugar.
         '''
 
 
-class LootTile(MapTile):
-    def intro_text(self):
+class BlocoPilhagem(Mundo):
+    def texto(self):
         return '''
         Parece que este local tem itens valiosos.
         '''
         # Criar função para adicionar itens ao inventário
 
 
-class VictoryTile(MapTile):
-    def intro_text(self):
+class BlocoVitoria(Mundo):
+    def texto(self):
         return '''
         Há um Helicóptero na distância...
         ...você consegue ouvi-lo quando chega perto, parece que é a sua saida desse lixo.
@@ -48,18 +56,18 @@ class VictoryTile(MapTile):
         '''
 
 
-mapa_do_mundo = [
-    [None, VictoryTile(1, 0), None],
-    [None, EmptyTile(1, 1), None],
-    [EmptyTile(0, 2), StartTile(1, 2), EmptyTile(2, 2)],
-    [None, EmptyTile(1, 3), None]
+mapa = [
+    [None, BlocoInicial(1, 0), None],
+    [None, BlocoVazio(1, 1), None],
+    [BlocoVazio(0, 2), BlocoVazio(1, 2), BlocoVazio(2, 2)],
+    [None, BlocoVitoria(1, 3), None]
 ]
 
 
-def tile_at(x, y):
+def blocoLocal(x, y):
     if x < 0 or y < 0:
         return None
     try:
-        return mapa_do_mundo[y][x]
+        return mapa[y][x]
     except IndexError:
         return None

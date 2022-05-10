@@ -1,46 +1,37 @@
 # Este jogo é uma aventura baseada em texto, que consiste em escapar de São Paulo.
-from player import Player
-import world
+from jogador import Jogador
+import mundo
+
+def comandoJogador():
+    return input("Digite uma ação: ")
 
 def play():
-    print("Escape from São Paulo!")
-    print('''Ações validas:
-    [n ou N] Ir para o Norte
-    [s ou S] Ir para o Sul
-    [e ou E] Ir para o Este
-    [o ou O] Ir para o Oeste
-    [i ou I] Ver Mochila
-    [m ou M] Ver melhor arma
-    \n''')
-    player = Player()
-    # GAME LOOP
+    jogador = Jogador()
+    # LOOP PRINCIPAL DO JOGO
     while True:
-        room = world.tile_at(player.x, player.y)
-        print(room.intro_text())
-        action_input = get_player_command()
+        sala = mundo.blocoLocal(jogador.x, jogador.y)
+        print(sala.texto())
+        acao = comandoJogador()
 
-        if action_input in ["n", "N"]:
+        if acao in ["w", "W"]:
             print("Viajar para o Norte!")
-            player.moverNorte()
+            jogador.moverNorte()
 
-        elif action_input in ['s', 'S']:
+        elif acao in ['s', 'S']:
             print("Viajar para o Sul!")
-            player.moverSul()
-        elif action_input in ['e', 'E']:
+            jogador.moverSul()
+        elif acao in ['d', 'D']:
             print("Viajar para o Este!")
-            player.moverEste()
-        elif action_input in ['o', 'O']:
+            jogador.moverEste()
+        elif acao in ['a', 'A']:
             print("Viajar para o Oeste!")
-            player.moverOeste()
-        elif action_input in ['i', 'I']:
+            jogador.moverOeste()
+        elif acao in ['q', 'Q']:
             print("Mochila:\n")
-            player.print_mochila()
-        elif action_input in ['m', 'M']:
-            print(player.arma_mais_poderosa())
+            jogador.verMochila()
+        elif acao in ['e', 'E']:
+            print("Sua melhor arma é a {} ".format(jogador.armaMaisPoderosa()))
         else:
             print("Ação invalida! Digite uma direção valida. ")
-
-def get_player_command():
-    return input("Digite uma ação: ")
 
 play()
