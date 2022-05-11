@@ -1,6 +1,7 @@
 import inimigos
 import random
 
+
 class Mundo:
     def __init__(self, x, y):
         self.x = x
@@ -22,7 +23,7 @@ class BlocoInicial(Mundo):
         toda cidade.
         
     Ações validas:    
-    [W] Ir para o Norte  [S] Ir para o Sul  [D] Ir para o Este
+    [W] Ir para o Norte  [S] Ir para o Sul  [D] Ir para o Leste
     [A] Ir para o Oeste  [Q] Ver Mochila    [E] Ver melhor arma 
         '''
 
@@ -42,10 +43,11 @@ class BlocoPilhagem(Mundo):
         '''
         # Criar função para adicionar itens ao inventário
 
+
 class BlocoInimigos(Mundo):
     def __init__(self, x, y):
         r = random.random()
-        if r < 0.50:
+        if r < 0.40:
             self.inimigo = inimigos.Bandido()
             self.textoVivo = '''
             Um bandido salta de trás de um carro quebrado e aponta uma faca afiada em sua direção.
@@ -53,7 +55,7 @@ class BlocoInimigos(Mundo):
             self.textoMorto = '''
             O corpo morto do bandido se encontra estendido no chão.
             '''
-        elif r < 0.80:
+        elif r < 0.70:
             self.inimigo = inimigos.BandidoArmadurado()
             self.textoVivo = '''
             O que é isso?! Um bandido blindado apareceu do nada e vocês engajam em combate.
@@ -62,20 +64,30 @@ class BlocoInimigos(Mundo):
             Um bandido blindado morto faz você se lembrar da luta que teve
             contra a armadura resistente que você possui agora.
             '''
+        elif r < 0.90:
+            self.inimigo = inimigos.LiderDeGange()
+            self.textoVivo = '''
+            Um bandido incomum aparece na sua frente, ele parece ser perigoso e
+            muito mais inteligente que os outros.
+            '''
+            self.textoMorto = '''
+            Um bandido morto faz você se lembrar da luta trabalhosa que teve
+            contra o lidar da gangue local.
+            '''
         else:
             self.inimigo = inimigos.BandidoEmMotocicleta()
             self.textoVivo = '''
-            Você ouve o que pensa ser rosnados monstruosos, mas na verdade
+            Você ouve o que parece ser rosnados monstruosos, mas na verdade
             são os berros da gangue de motociclistas que o cercou.
             '''
             self.textoMorto = '''
-            Vários motoqueiros mortos jaziam no chão após a luta que aconteceu aqui.
+            Vários motoqueiros mortos no chão, após a luta que aconteceu aqui.
             '''
         super().__init__(x, y)
 
     def texto(self):
-        t = self.textoVivo if self.inimigo.vivo() else self.textoMorto
-        return t
+        txt = self.textoVivo if self.inimigo.vivo() else self.textoMorto
+        return txt
 
 
 class BlocoVitoria(Mundo):

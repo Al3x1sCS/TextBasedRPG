@@ -21,7 +21,7 @@ def play():
             print("Viajar para o Sul!")
             jogador.moverSul()
         elif acao in ['d', 'D']:
-            print("Viajar para o Este!")
+            print("Viajar para o Leste!")
             jogador.moverEste()
         elif acao in ['a', 'A']:
             print("Viajar para o Oeste!")
