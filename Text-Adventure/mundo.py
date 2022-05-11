@@ -46,16 +46,36 @@ class BlocoInimigos(Mundo):
     def __init__(self, x, y):
         r = random.random()
         if r < 0.50:
-            self.inimigos = inimigos.Bandido()
+            self.inimigo = inimigos.Bandido()
             self.textoVivo = '''
             Um bandido salta de trás de um carro quebrado e aponta uma faca afiada em sua direção.
             '''
-            # Criar uma função para adquirir o loot do bandido.
-
             self.textoMorto = '''
             O corpo morto do bandido se encontra estendido no chão.
             '''
-            #continuar escrevendo o ELIF
+        elif r < 0.80:
+            self.inimigo = inimigos.BandidoArmadurado()
+            self.textoVivo = '''
+            O que é isso?! Um bandido blindado apareceu do nada e vocês engajam em combate.
+            '''
+            self.textoMorto = '''
+            Um bandido blindado morto faz você se lembrar da luta que teve
+            contra a armadura resistente que você possui agora.
+            '''
+        else:
+            self.inimigo = inimigos.BandidoEmMotocicleta()
+            self.textoVivo = '''
+            Você ouve o que pensa ser rosnados monstruosos, mas na verdade
+            são os berros da gangue de motociclistas que o cercou.
+            '''
+            self.textoMorto = '''
+            Vários motoqueiros mortos jaziam no chão após a luta que aconteceu aqui.
+            '''
+        super().__init__(x, y)
+
+    def texto(self):
+        t = self.textoVivo if self.inimigo.vivo() else self.textoMorto
+        return t
 
 
 class BlocoVitoria(Mundo):
@@ -71,14 +91,14 @@ class BlocoVitoria(Mundo):
 
 
 mapa = [
-    [None, BlocoInicial(1, 0), None],
+    [BlocoInimigos(0, 0), BlocoInicial(1, 0), None],
     [None, BlocoVazio(1, 1), None],
     [BlocoVazio(0, 2), BlocoPilhagem(1, 2), BlocoVazio(2, 2)],
     [None, BlocoVitoria(1, 3), None]
 ]
 
 
-def blocoLocal(x, y):
+def blocolocal(x, y):
     if x < 0 or y < 0:
         return None
     try:

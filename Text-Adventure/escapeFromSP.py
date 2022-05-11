@@ -9,7 +9,7 @@ def play():
     jogador = Jogador()
     # LOOP PRINCIPAL DO JOGO
     while True:
-        sala = mundo.blocoLocal(jogador.x, jogador.y)
+        sala = mundo.blocolocal(jogador.x, jogador.y)
         print(sala.texto())
         acao = comandoJogador()
 
