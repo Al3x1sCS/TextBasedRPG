@@ -28,13 +28,13 @@ class BandidoArmadurado(Inimigos):
 
 class BandidoEmMotocicleta(Inimigos):
     def __init__(self):
-        self.nome = "Um Bandido perigoso montado em uma motocicleta."
+        self.nome = "Bandido perigoso em motocicleta."
         self.vida = 100
         self.dano = 20
 
 
 class LiderDeGange(Inimigos):
     def __init__(self):
-        self.nome = "Um Bandido lider muito perigoso"
+        self.nome = "Bandido lider muito perigoso"
         self.vida = 100
         self.dano = 80

@@ -1,5 +1,6 @@
 import itens
 import mundo
+import inimigos
 
 class Jogador:
     def __init__(self):
@@ -11,6 +12,26 @@ class Jogador:
         ]
         self.x = 1
         self.y = 0
+        self.vida = 100
+
+    def verMochila(self):
+        print("Mochila: ")
+        for item in self.mochila:
+            print("* " + str(item))
+
+    def armaMaisPoderosa(self):
+        danoMaximo = 0
+        melhorArma = None
+        for item in self.mochila:
+            try:
+                if danoMaximo < item.dano:
+                    melhorArma = item
+                    danoMaximo = item.dano
+
+            except AttributeError:
+                pass
+
+        return melhorArma
 
     def mover(self, coord_x, coord_y):
         self.x += coord_x
@@ -28,22 +49,13 @@ class Jogador:
     def moverOeste(self):
         self.mover(coord_x=-1, coord_y=0)
 
-
-    def armaMaisPoderosa(self):
-        danoMaximo = 0
-        melhorArma = None
-        for item in self.mochila:
-            try:
-                if danoMaximo < item.dano:
-                    melhorArma = item
-                    danoMaximo = item.dano
-
-            except AttributeError:
-                pass
-
-        return melhorArma
-
-    def verMochila(self):
-        print("Mochila: ")
-        for item in self.mochila:
-            print("* " + str(item))
+    def ataque(self):
+        melhorArma = self.armaMaisPoderosa()
+        sala = mundo.blocoLocal(self.x, self.y)
+        inimigo = sala.inimigo
+        print("Voce usa o(a) {} contra o(a) {}".format(melhorArma, inimigo.nome))
+        inimigo.vida -= melhorArma.dano
+        if inimigo.morto():
+            print("Você matou o(a) {}.".format(inimigo.nome))
+        else:
+            print("{} Vida: {}".format(inimigo.nome, inimigo.vida))

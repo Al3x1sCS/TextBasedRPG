@@ -10,11 +10,14 @@ class Mundo:
     def texto(self):
         raise NotImplementedError("Crie uma classe!")
 
+    def modificaJogador(self, jogador):
+        pass
+
 
 class BlocoInicial(Mundo):
     def texto(self):
         return '''Escape de São Paulo!        
-            A terra entrou no que parece ser uma terceira gerra-mundial.
+            A terra entrou no que parece ser uma terceira guerra-mundial.
         Satélites foram destruídos, a internet foi sabotada e os meios de
         comunicação silenciados.
             Ataques com bombas eletromagnéticas destruíram grande parte
@@ -24,7 +27,7 @@ class BlocoInicial(Mundo):
         
     Ações validas:    
     [W] Ir para o Norte  [S] Ir para o Sul  [D] Ir para o Leste
-    [A] Ir para o Oeste  [Q] Ver Mochila    [E] Ver melhor arma 
+    [A] Ir para o Oeste  [I] Ver Mochila    [E] Ver melhor arma 
         '''
 
 
@@ -89,6 +92,11 @@ class BlocoInimigos(Mundo):
         txt = self.textoVivo if self.inimigo.vivo() else self.textoMorto
         return txt
 
+    def modificaJogador(self, jogador):
+        if self.inimigo.vivo():
+            jogador.vida = jogador.vida - self.inimigo.dano
+            print("O inimigo deu {} de dano, você tem {} de vida.".format(self.inimigo.dano, jogador.vida))
+
 
 class BlocoVitoria(Mundo):
     def texto(self):
@@ -103,14 +111,14 @@ class BlocoVitoria(Mundo):
 
 
 mapa = [
-    [BlocoInimigos(0, 0), BlocoInicial(1, 0), None],
-    [None, BlocoVazio(1, 1), None],
+    [BlocoInimigos(0, 0), BlocoInicial(1, 0), BlocoInimigos(2, 0)],
+    [BlocoInimigos(0, 1), BlocoVazio(1, 1), BlocoInimigos(2, 1)],
     [BlocoVazio(0, 2), BlocoPilhagem(1, 2), BlocoVazio(2, 2)],
-    [None, BlocoVitoria(1, 3), None]
+    [BlocoInimigos(0, 3), BlocoVitoria(1, 3), BlocoInimigos(2, 3)]
 ]
 
 
-def blocolocal(x, y):
+def blocoLocal(x, y):
     if x < 0 or y < 0:
         return None
     try:

@@ -9,14 +9,15 @@ def play():
     jogador = Jogador()
     # LOOP PRINCIPAL DO JOGO
     while True:
-        sala = mundo.blocolocal(jogador.x, jogador.y)
+        sala = mundo.blocoLocal(jogador.x, jogador.y)
         print(sala.texto())
         acao = comandoJogador()
+        sala.modificaJogador(jogador)
+
 
         if acao in ["w", "W"]:
             print("Viajar para o Norte!")
             jogador.moverNorte()
-
         elif acao in ['s', 'S']:
             print("Viajar para o Sul!")
             jogador.moverSul()
@@ -26,11 +27,13 @@ def play():
         elif acao in ['a', 'A']:
             print("Viajar para o Oeste!")
             jogador.moverOeste()
-        elif acao in ['q', 'Q']:
+        elif acao in ['i', 'I']:
             print("Mochila:\n")
             jogador.verMochila()
         elif acao in ['e', 'E']:
             print("Sua melhor arma é a {} ".format(jogador.armaMaisPoderosa()))
+        elif acao in ['q', 'Q']:
+            jogador.ataque()
         else:
             print("Ação invalida! Digite uma direção valida. ")
 
