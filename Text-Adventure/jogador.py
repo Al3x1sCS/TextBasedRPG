@@ -8,6 +8,7 @@ class Jogador:
         self.mochila = [
             itens.Pedra(),
             itens.Faca(),
+            itens.Carabina(),
             'Balas',
             itens.KitMedico(),
             itens.Comida(),
@@ -16,6 +17,14 @@ class Jogador:
         self.x = 1
         self.y = 0
         self.vida = 100
+        self.dinheiro = 100
+        self.vitoria = False
+
+    def vivo(self):
+        return self.vida > 0
+
+    def morto(self):
+        return  self.vida <= 0
 
     def verMochila(self):
         print("Mochila: ")

@@ -7,12 +7,11 @@ import mundo
 def play():
     jogador = Jogador()
     # LOOP PRINCIPAL DO JOGO
-    while True:
+    while jogador.vivo() and not jogador.vitoria:
         sala = mundo.blocoLocal(jogador.x, jogador.y)
         print(sala.texto())
         sala.modificaJogador(jogador)
         escolhaJogador(sala, jogador)
-
 
 def adicionarAcao(dicionarioAcoes, tecla, acao, nome):
     dicionarioAcoes[tecla.lower()] = acao
@@ -24,6 +23,8 @@ def pegarAcaoValida(sala, jogador):
     print("Escolha uma ação: ")
     if jogador.mochila:
         adicionarAcao(acao, 'i', jogador.verMochila, 'Ver mochila')
+    if jogador.vida < 100:
+        adicionarAcao(acao, 'c', jogador.cura, 'Curar-se')
     if isinstance(sala, mundo.BlocoInimigos) and sala.inimigo.vivo():
         adicionarAcao(acao, 'q', jogador.ataque, 'Ataque')
     else:
@@ -35,8 +36,6 @@ def pegarAcaoValida(sala, jogador):
             adicionarAcao(acao, 'd', jogador.moverLeste, 'Viajando para o Leste')
         if mundo.blocoLocal(sala.x - 1, sala.y):
             adicionarAcao(acao, 'a', jogador.moverOeste(), 'Viajando para o Oeste')
-    if jogador.vida < 100:
-        adicionarAcao(acao, 'c', jogador.cura, 'Curar-se')
 
     return acao
 

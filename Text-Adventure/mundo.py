@@ -95,6 +95,9 @@ class BlocoInimigos(Mundo):
 
 
 class BlocoVitoria(Mundo):
+    def modificaJogador(self, jogador):
+        jogador.vitoria = True
+
     def texto(self):
         return '''
         Há um Helicóptero na distância...

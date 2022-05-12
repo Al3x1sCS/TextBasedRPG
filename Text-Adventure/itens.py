@@ -45,11 +45,11 @@ class Espingarda(Arma):
 
 class Carabina(Arma):
     def __init__(self):
-        self.nome = "Escopeta 12mm"
+        self.nome = "Carabina com mira de ferro"
         self.descricao = "Carabina é uma arma de fogo mais curta que o fuzil, tendo entre 1,0 e 1,2 \n" \
                          "metro de comprimento muito usada em caça e tiro desportivo podendo ser de \n" \
                          "diversos calibres."
-        self.dano = 5
+        self.dano = 100
         self.especial = "Pode ser acoplada uma lente de precisão a Carabina de até x8."
 
 class Frigideira(Arma):
