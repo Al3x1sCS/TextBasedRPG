@@ -8,7 +8,7 @@ class Jogador:
             itens.Pedra(),
             itens.Faca(),
             'Balas',
-            'Kit-médico'
+            itens.KitMedico()
         ]
         self.x = 1
         self.y = 0
@@ -59,3 +59,24 @@ class Jogador:
             print("Você matou o(a) {}.".format(inimigo.nome))
         else:
             print("{} Vida: {}".format(inimigo.nome, inimigo.vida))
+
+    def cura(self):
+        consumivel = [item for item in self.mochila if isinstance(iten, itens.Consumivel)]
+        if not consumivel:
+            print("Você não tem itens consumíveis para curar-se")
+            return
+        for i, item in enumerate(consumivel, 1):
+            print("Escolha um item para cura: ")
+            print("{}, {}".format(i, item))
+
+        valido = False
+        while not valido:
+            escolha = input("")
+            try:
+                consumir = consumivel[int(escolha) -1]
+                self.vida = min(100, self.vida + consumir.valorDeCura)
+                self.mochila.remove(consumir)
+                print("VIDA ATUAL: {}".format(self.vida))
+                valido = True
+            except (ValueError, IndexError):
+                print("Escolha errada, tende de novo.")

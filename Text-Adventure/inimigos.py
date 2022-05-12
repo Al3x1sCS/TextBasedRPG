@@ -1,5 +1,8 @@
 class Inimigos:
     def __init__(self):
+        self.nome: str = nome
+        self.vida: int = vida
+        self.dano: int = dano
         raise NotImplementedError("Crie uma classe não um objeto.")
 
     def __str__(self):
@@ -37,4 +40,4 @@ class LiderDeGange(Inimigos):
     def __init__(self):
         self.nome = "Bandido lider muito perigoso"
         self.vida = 100
-        self.dano = 80
+        self.dano = 40

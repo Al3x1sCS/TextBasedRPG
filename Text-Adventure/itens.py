@@ -2,10 +2,22 @@
 
 class Arma:
     def __init__(self):
+        self.nome: str = nome
+        self.descricao: str = descricao
+        self.dano: int = dano
         raise NotImplementedError("Não crie um objeto novo, crie uma classe com herança")
 
     def __str__(self):
         return self.nome
+
+class Consumivel:
+    def __init__(self):
+        self.nome: str = nome
+        self.valorDeCura: str = valorDeCura
+        raise NotImplementedError("Não crie um objeto novo, crie uma classe com herança")
+
+    def __str__(self):
+        return "{} (+ {} VIDA)".format(self.nome, self.valorDeCura)
 
 class Faca(Arma):
     def __init__(self):
@@ -46,3 +58,21 @@ class Frigideira(Arma):
         self.descricao = "Um utensílio usado na cozinha para fritar alimentos."
         self.dano = 7
         self.especial = "Faz um barulho engraçado quando bate na cabeça do inimigo."
+
+
+class KitMedico(Consumivel):
+    def __init__(self):
+        self.nome = "Kit Médico"
+        self.valorDeCura = 100
+
+
+class Comida(Consumivel):
+    def __init__(self):
+        self.nome = "Comida"
+        self.valorDeCura = 25
+
+
+class Agua(Consumivel):
+    def __init__(self):
+        self.nome = "Água"
+        self.valorDeCura = 25
