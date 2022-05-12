@@ -23,11 +23,9 @@ def pegarAcaoValida(sala, jogador):
     acao = OrderedDict()
     print("Escolha uma ação: ")
     if jogador.mochila:
-        adicionarAcao(acao, 'i', jogador.verMochila, "Ver mochila")
+        adicionarAcao(acao, 'i', jogador.verMochila, 'Ver mochila')
     if isinstance(sala, mundo.BlocoInimigos) and sala.inimigo.vivo():
         adicionarAcao(acao, 'q', jogador.ataque, 'Ataque')
-    if jogador.vida < 100:
-        adicionarAcao(acao, 'c', jogador.cura, 'Curar-se')
     else:
         if mundo.blocoLocal(sala.x, sala.y - 1):
             adicionarAcao(acao, 'w', jogador.moverNorte, 'Viajando para o Norte')
@@ -37,6 +35,8 @@ def pegarAcaoValida(sala, jogador):
             adicionarAcao(acao, 'd', jogador.moverLeste, 'Viajando para o Leste')
         if mundo.blocoLocal(sala.x - 1, sala.y):
             adicionarAcao(acao, 'a', jogador.moverOeste(), 'Viajando para o Oeste')
+    if jogador.vida < 100:
+        adicionarAcao(acao, 'c', jogador.cura, 'Curar-se')
 
     return acao
 

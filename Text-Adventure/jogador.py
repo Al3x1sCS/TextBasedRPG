@@ -9,7 +9,9 @@ class Jogador:
             itens.Pedra(),
             itens.Faca(),
             'Balas',
-            itens.KitMedico()
+            itens.KitMedico(),
+            itens.Comida(),
+            itens.Agua()
         ]
         self.x = 1
         self.y = 0
@@ -19,6 +21,8 @@ class Jogador:
         print("Mochila: ")
         for item in self.mochila:
             print("* " + str(item))
+        melhorArma = self.armaMaisPoderosa()
+        print("Sua melhor arma é: {}".format(melhorArma))
 
     def armaMaisPoderosa(self):
         danoMaximo = 0
