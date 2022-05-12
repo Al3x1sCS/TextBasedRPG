@@ -23,12 +23,7 @@ class BlocoInicial(Mundo):
             Ataques com bombas eletromagnéticas destruíram grande parte
         do país e deixaram os sobreviventes as cegas, sem comunicação, nem
         informações de qualquer tipo, espalhando o caos e destruição por
-        toda cidade.
-        
-    Ações validas:    
-    [W] Ir para o Norte  [S] Ir para o Sul  [D] Ir para o Leste
-    [A] Ir para o Oeste  [I] Ver Mochila    [E] Ver melhor arma
-    [C] Curar Feridas
+        toda cidade.    
         '''
 
 

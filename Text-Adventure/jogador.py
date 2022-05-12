@@ -2,6 +2,7 @@ import itens
 import mundo
 import inimigos
 
+
 class Jogador:
     def __init__(self):
         self.mochila = [
@@ -43,7 +44,7 @@ class Jogador:
     def moverSul(self):
         self.mover(coord_x=0, coord_y=1)
 
-    def moverEste(self):
+    def moverLeste(self):
         self.mover(coord_x=1, coord_y=0)
 
     def moverOeste(self):
