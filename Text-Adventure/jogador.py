@@ -61,7 +61,7 @@ class Jogador:
             print("{} Vida: {}".format(inimigo.nome, inimigo.vida))
 
     def cura(self):
-        consumivel = [item for item in self.mochila if isinstance(iten, itens.Consumivel)]
+        consumivel = [item for item in self.mochila if isinstance(item, itens.Consumivel)]
         if not consumivel:
             print("Você não tem itens consumíveis para curar-se")
             return

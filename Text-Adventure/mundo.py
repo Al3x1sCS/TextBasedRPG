@@ -27,7 +27,8 @@ class BlocoInicial(Mundo):
         
     Ações validas:    
     [W] Ir para o Norte  [S] Ir para o Sul  [D] Ir para o Leste
-    [A] Ir para o Oeste  [I] Ver Mochila    [E] Ver melhor arma 
+    [A] Ir para o Oeste  [I] Ver Mochila    [E] Ver melhor arma
+    [C] Curar Feridas
         '''
 
 

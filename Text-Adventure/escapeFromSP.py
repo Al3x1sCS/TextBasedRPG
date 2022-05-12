@@ -34,6 +34,8 @@ def play():
             print("Sua melhor arma é a {} ".format(jogador.armaMaisPoderosa()))
         elif acao in ['q', 'Q']:
             jogador.ataque()
+        elif acao in ['c', 'C']:
+            jogador.cura()
         else:
             print("Ação invalida! Digite uma direção valida. ")
 
