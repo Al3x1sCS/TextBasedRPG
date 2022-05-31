@@ -2,9 +2,6 @@
 
 class Arma:
     def __init__(self):
-        self.nome: str = nome
-        self.descricao: str = descricao
-        self.dano: int = dano
         raise NotImplementedError("Não crie um objeto novo, crie uma classe com herança")
 
     def __str__(self):
@@ -12,8 +9,6 @@ class Arma:
 
 class Consumivel:
     def __init__(self):
-        self.nome: str = nome
-        self.valorDeCura: str = valorDeCura
         raise NotImplementedError("Não crie um objeto novo, crie uma classe com herança")
 
     def __str__(self):
